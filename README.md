@@ -3,7 +3,8 @@ This repository contains code for a browser extension that shows Whois informati
 
 # Browser Extension with Node.js Backend
 
-![extension-demo](./images/demo.png)
+![extension-demo](./images/demo1.png)
+![extension-demo](./images/demo2.png)
 
 This repository contains a browser extension that uses a Node.js backend. The backend is stored in the extension-backend directory. In order to run the extension on your machine, you will need to first download the project folder and run the backend and then load the extension in your browser.
 
