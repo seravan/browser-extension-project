@@ -22,7 +22,7 @@ Before you can run the extension, you will need to have the following software i
 - Run `npm run server` to start the backend server.
 - Once the backend server is running, load the extension in your browser:
 
-### LOad extension on Google Chrome
+### Load extension on Google Chrome
 
 - Navigate to chrome://extensions/ in your browser.
 - Enable "Developer mode" in the top right corner.
