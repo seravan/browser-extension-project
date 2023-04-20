@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./popup.css" />
+</head>
+
+<body>
+  <template id="whois_template">
+    <li>
+      <a>
+        <h3 class="domainName">Domain Name :</h3>
+        <p class="registrarName">Registrar Name :</p>
+        <p class="contactEmail">Contact Email :</p>
+        <p class="nameServers">Name Servers :</p>
+      </a>
+    </li>
+
+  </template>
+  <template id="reputation_template">
+    <li>
+      <a>
+        <h3 class="domainName">Domain Name :</h3>
+        <p class="mode">Mode :</p>
+        <p class="reputationScore">Reputation Score :</p>
+      </a>
+    </li>
+
+  </template>
+  <template id="vul_template">
+    <h3 class="vulComponent">Domain Name :</h3>
+  </template>
+  <h1>Get Whois Website information</h1>
+  <form type="submit" id="dataForm">
+    <input type="text" placeholder="Enter domain name" name="whois-url" />
+    <button>Whois</button>
+    <ul id="whois-info"></ul>
+  </form>
+  <h1>Get Domain Reputation information</h1>
+  <form type="submit" id="reputation">
+    <input type="text" placeholder="Enter domain name" name="reputation-url" />
+    <button>reputation</button>
+  </form>
+  <ul id="reputation-info"></ul>
+  <h1>Get JavaScript Vulnerable components</h1>
+  <form type="submit" id="vulnerable">
+    <input type="text" placeholder="Enter your url" name="vulnerable-url" />
+    <button>Vul. Components</button>
+  </form>
+  <h3 id="vulnerable-info">
+  </h3>
+
+  <script src="./popup.js" type="module"></script>
+</body>
+
+</html>
