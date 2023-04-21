@@ -8,7 +8,7 @@ whoisButton.addEventListener("submit", async (e) => {
   // Define the API endpoint
   const apiUrl = "https://www.whoisxmlapi.com/whoisserver/WhoisService";
   // Define the API key and output format
-  const apiKey = "at_nnxXYPUjPgbLt68Jr7iL66rbLHeNA";
+  const apiKey = "xxxxxxxxxxxxxxxxxxxxxxx";
   const outputFormat = "json";
   let whoisData = {};
 
@@ -66,7 +66,7 @@ reputationButton.addEventListener("submit", async (e) => {
   // Define the API endpoint
   const apiUrl = "https://domain-reputation.whoisxmlapi.com/api/v2";
   // Define the API key and output format
-  const apiKey = "at_nnxXYPUjPgbLt68Jr7iL66rbLHeNA";
+  const apiKey = "xxxxxxxxxxxxxxxxxxxxxx";
   const outputFormat = "json";
   let reputationData = {};
 
