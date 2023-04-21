@@ -77,7 +77,7 @@ reputationButton.addEventListener("submit", async (e) => {
 
   // Define the API request URL
   const url = `${apiUrl}?${queryParams}`;
-  // Make an API request to retrieve WHOIS data
+  // Make request to backend
   try {
     const response = await fetch(url);
     reputationData = await response.json();
@@ -116,7 +116,7 @@ vulnerableButton.addEventListener("submit", async (e) => {
   // Define the API key and output format
   let vulnerableData = {};
   let data;
-  // Make an API request to retrieve WHOIS data
+  
   try {
     vulnerableData = await fetch(apiUrl);
     data = await vulnerableData.json();
