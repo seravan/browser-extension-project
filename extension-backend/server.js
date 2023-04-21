@@ -2,9 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import fetch from "node-fetch";
 import cors from "cors";
-import validator from "validator";
-import csurf from "csurf";
-import helmet from "helmet";
 
 dotenv.config();
 
@@ -18,12 +15,6 @@ app.get("/", (req, res) => {
 
 app.get("/vulnerable-components/", async (req, res) => {
   const url = req.query.url;
-  // Validate and sanitize the URL
-  if (!validator.isURL(url)) {
-    res.status(400).send("Invalid URL");
-    return;
-  }
-  const sanitizedUrl = validator.escape(url);
   // Define an object of known vulnerable libraries and their associated security issues
   const vulnerabilities = [];
   const vulnerableLibraries = {
@@ -63,7 +54,7 @@ app.get("/vulnerable-components/", async (req, res) => {
   //   "https://web-highlights.com/blog/how-to-build-a-chrome-extension-using-react/";
   var websiteHtml;
   try {
-    const response = await fetch(sanitizedUrl);
+    const response = await fetch(url);
     websiteHtml = await response.text();
   } catch (error) {
     res.status().send(404);
@@ -92,15 +83,6 @@ app.get("/vulnerable-components/", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-
-app.use(helmet());
-
-app.use(csurf());
-// Set the CSRF token in the response headers
-app.use((req, res, next) => {
-  res.setHeader("X-CSRF-Token", req.csrfToken());
-  next();
-});
 
 app.listen(
   PORT,
