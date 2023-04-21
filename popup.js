@@ -1,7 +1,62 @@
 const whoisButton = document.querySelector("#dataForm");
 const reputationButton = document.querySelector("#reputation");
 const vulnerableButton = document.querySelector("#vulnerable");
-//Whois Function -- Fill here --remove the line
+whoisButton.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  // get domain from the input field
+  const domain = whoisButton.querySelector('input[name="whois-url"]').value;
+  // Define the API endpoint
+  const apiUrl = "https://www.whoisxmlapi.com/whoisserver/WhoisService";
+  // Define the API key and output format
+  const apiKey = "at_nnxXYPUjPgbLt68Jr7iL66rbLHeNA";
+  const outputFormat = "json";
+  let whoisData = {};
+
+  // Define the domain name you want to lookup
+  const domainName = domain;
+
+  // Define the API query parameters
+  const queryParams = new URLSearchParams({
+    apiKey,
+    domainName,
+    outputFormat,
+  });
+
+  // Define the API request URL
+  const url = `${apiUrl}?${queryParams}`;
+  // Make an API request to retrieve WHOIS data
+  try {
+    const response = await fetch(url);
+    whoisData = await response.json();
+  } catch (error) {
+    alert("failed to fetch the data !!!");
+  }
+
+  const template = document.getElementById("whois_template");
+  const elements = new Set();
+  const element = template.content.firstElementChild.cloneNode(true);
+  const nameServers = whoisData.WhoisRecord.nameServers.hostNames;
+
+  element.querySelector(".domainName").textContent =
+    element.querySelector(".domainName").textContent +
+    " " +
+    whoisData.WhoisRecord.domainName;
+  element.querySelector(".registrarName").textContent =
+    element.querySelector(".registrarName").textContent +
+    " " +
+    whoisData.WhoisRecord.registrarName;
+  element.querySelector(".contactEmail").textContent =
+    element.querySelector(".contactEmail").textContent +
+    " " +
+    whoisData.WhoisRecord.contactEmail;
+  
+  nameServers.map((nameServer) => {
+    element.querySelector(".nameServers").textContent = element.querySelector(".nameServers").textContent + " " + nameServer;
+  })
+  elements.add(element);
+  document.querySelector("#whois-info").append(...elements);
+});
+
 reputationButton.addEventListener("submit", async (e) => {
   e.preventDefault();
   // get domain from the input field
